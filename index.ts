@@ -4,7 +4,6 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 import figlet from "figlet";
 
-
 const welCome = async () => {
   console.log(figlet.textSync("Number Guess Game \n"));
 };
@@ -35,30 +34,34 @@ while (attempts < UserInput) {
 
   if (guessNumber < randomNumber) {
     console.log(
-      chalk.bgGreen(
+      chalk.white(
         `Your number is less than the computer number! Please try again`
       )
     );
   } else if (guessNumber > randomNumber) {
     console.log(
-      chalk.bgMagenta(
+      chalk.red(
         `Your number is greater than the computer number! Please try again`
+      )
+    );
+  } else if (guessNumber === randomNumber) {
+    console.log(
+      chalk.bgRed(
+        `Congratulations! Because your number (${guessNumber}) and computer number (${randomNumber}) is matched!`
       )
     );
   } else {
     console.log(
       chalk.bgBlue(
-        `Congratulations! Because your number (${guessNumber}) and computer number (${randomNumber}) is matched!`
+        `Try Again`
       )
     );
     break;
   }
   attempts++;
 }
+
 if (attempts === UserInput) {
-  console.log(
-    chalk.bgRed(
-      `Sorry! Your attempt was successfully completed and you ran out of the game and the computerNumber is (${randomNumber})`
-    )
-  );
+  console.log(chalk.yellowBright('Your attempts is completed successfully'));
+  
 }

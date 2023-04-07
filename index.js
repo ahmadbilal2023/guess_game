@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
 import figlet from "figlet";
@@ -26,17 +27,20 @@ while (attempts < UserInput) {
     ]);
     let { guessNumber } = guessUser;
     if (guessNumber < randomNumber) {
-        console.log(chalk.bgGreen(`Your number is less than the computer number! Please try again`));
+        console.log(chalk.white(`Your number is less than the computer number! Please try again`));
     }
     else if (guessNumber > randomNumber) {
-        console.log(chalk.bgMagenta(`Your number is greater than the computer number! Please try again`));
+        console.log(chalk.red(`Your number is greater than the computer number! Please try again`));
+    }
+    else if (guessNumber === randomNumber) {
+        console.log(chalk.bgRed(`Congratulations! Because your number (${guessNumber}) and computer number (${randomNumber}) is matched!`));
     }
     else {
-        console.log(chalk.bgBlue(`Congratulations! Because your number (${guessNumber}) and computer number (${randomNumber}) is matched!`));
+        console.log(chalk.bgBlue(`Try Again`));
         break;
     }
     attempts++;
 }
 if (attempts === UserInput) {
-    console.log(chalk.bgRed(`Sorry! Your attempt was successfully completed and you ran out of the game and the computerNumber is (${randomNumber})`));
+    console.log(chalk.yellowBright('Your attempts is completed successfully'));
 }
